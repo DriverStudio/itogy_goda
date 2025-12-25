@@ -11,6 +11,12 @@
     --festive-red: #b33939;
 }
 
+/* --- ВАЖНО: Добавляем html, чтобы убрать белые полосы --- */
+html {
+    height: 100%;
+    background-color: #0f2027; /* Темная подложка */
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -45,13 +51,23 @@
 }
 
 body {
-    background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    /* 1. Сначала задаем сплошной цвет (если градиент заглючит) */
+    background-color: #0f2027; 
+    
+    /* 2. Поверх кладем градиент */
+    background-image: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    
+    /* 3. Фиксируем фон, чтобы он не прыгал при скролле на мобилках */
+    background-attachment: fixed; 
+    
     color: var(--text-white);
     font-family: 'Montserrat', sans-serif;
-    /* Оставляем hidden, чтобы не было двойной прокрутки с body */
     overflow: hidden; 
-    min-height: 100vh;
+    
+    /* Используем 100% вместо vh для надежности на iOS */
+    min-height: 100%; 
     position: relative;
+    width: 100%;
 }
 
 /* Анимация фона (Северное сияние) */
