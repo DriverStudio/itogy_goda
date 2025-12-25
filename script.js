@@ -64,14 +64,23 @@ function renderUserGrid() {
 function startStory(id) {
     currentUserId = id;
     currentSlideIndex = 0;
+    
     document.getElementById('selection-screen').classList.remove('active');
     document.getElementById('story-screen').classList.add('active');
+    
+    // --- ДОБАВИТЬ ЭТУ СТРОКУ ---
+    document.getElementById('progress-bar-container').style.display = 'block'; 
+
     renderSlide();
 }
 
 function closeStory() {
     document.getElementById('story-screen').classList.remove('active');
     document.getElementById('selection-screen').classList.add('active');
+    
+    // --- ДОБАВИТЬ ЭТУ СТРОКУ ---
+    document.getElementById('progress-bar-container').style.display = 'none';
+
     currentUserId = null;
     currentSlideIndex = 0;
 }
