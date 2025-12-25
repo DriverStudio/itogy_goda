@@ -585,3 +585,63 @@ h1 {
     h1 { font-size: 2.2rem; }
     .big-number { font-size: 3.5rem; }
 }
+
+/* --- НОВЫЙ ЭФФЕКТ: Активная карточка по центру --- */
+/* Класс .highlighted будет добавляться через JS */
+/* --- МОБИЛЬНЫЙ БЛИК С УЧЕТОМ НАПРАВЛЕНИЯ --- */
+@media (max-width: 768px) {
+    
+    .user-card.highlighted {
+        transform: scale(1.05);
+        border-color: var(--accent-gold);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        z-index: 5;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+        position: relative; /* Важно для абсолютного позиционирования блика */
+        overflow: hidden;   /* Чтобы блик не вылетал за пределы */
+    }
+
+    /* Общие настройки блика */
+    .user-card.highlighted::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Золотой градиент */
+        background: linear-gradient(
+            to bottom, 
+            transparent, 
+            rgba(255, 215, 0, 0.4), 
+            transparent
+        );
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    /* Если скроллим ВНИЗ (класс dir-down) - блик падает сверху */
+    .user-card.highlighted.dir-down::before {
+        animation: shineTopDown 1.5s infinite;
+    }
+
+    /* Если скроллим ВВЕРХ (класс dir-up) - блик летит снизу */
+    .user-card.highlighted.dir-up::before {
+        animation: shineBottomUp 1.5s infinite;
+    }
+
+    /* Анимация вниз */
+    @keyframes shineTopDown {
+        0% { top: -100%; opacity: 0; }
+        10% { opacity: 1; }
+        50% { top: 200%; opacity: 0; }
+        100% { top: 200%; opacity: 0; }
+    }
+
+    /* Анимация вверх */
+    @keyframes shineBottomUp {
+        0% { top: 200%; opacity: 0; }
+        10% { opacity: 1; }
+        50% { top: -100%; opacity: 0; }
+        100% { top: -100%; opacity: 0; }
+    }
+}

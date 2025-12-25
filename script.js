@@ -59,6 +59,8 @@ function renderUserGrid() {
         card.onclick = () => startStory(id);
         grid.appendChild(card);
     });
+
+    setTimeout(initScrollTracking, 100);
 }
 
 function startStory(id) {
@@ -99,7 +101,7 @@ function getSlides() {
             title: "Твоя активность",
             val: s.messages,
             label: "сообщений отправлено",
-            content: `В этом году ты занял(а) почетное <strong>${s.rank}-е место</strong> в топе писателей!`,
+            content: `В этом году ты занял(а) почетное <nobr><strong>${s.rank}-е место</strong></nobr> в топе писателей!`,
             type: "stat"
         },
         {
@@ -225,6 +227,65 @@ function prevSlide() {
         currentSlideIndex--;
         renderSlide();
     }
+}
+
+// Функция подсветки центральной карточки
+let lastScrollTop = 0; // Запоминаем, где мы были
+
+function trackCenterCard() {
+    const screen = document.getElementById('selection-screen');
+    const cards = document.querySelectorAll('.user-card');
+    const screenCenter = window.innerHeight / 2;
+
+    // 1. Определяем направление скролла
+    let currentScrollTop = screen.scrollTop;
+    let directionClass = 'dir-down'; // По умолчанию вниз
+
+    if (currentScrollTop < lastScrollTop) {
+        // Если текущая позиция МЕНЬШЕ прошлой, значит мы едем ВВЕРХ
+        directionClass = 'dir-up';
+    } else {
+        // Иначе ВНИЗ
+        directionClass = 'dir-down';
+    }
+    
+    // Обновляем "прошлую" позицию для следующего раза
+    lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop; 
+
+    // 2. Ищем центральную карточку
+    let closestCard = null;
+    let minDistance = Infinity;
+
+    cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.top + (rect.height / 2);
+        const distance = Math.abs(screenCenter - cardCenter);
+
+        // Очищаем старые классы перед проверкой
+        card.classList.remove('highlighted', 'dir-up', 'dir-down');
+
+        if (distance < minDistance) {
+            minDistance = distance;
+            closestCard = card;
+        }
+    });
+
+    // 3. Подсвечиваем победителя и задаем ему направление
+    if (closestCard) {
+        closestCard.classList.add('highlighted');
+        closestCard.classList.add(directionClass);
+    }
+}
+
+// Запускаем отслеживание скролла
+function initScrollTracking() {
+    const screen = document.getElementById('selection-screen');
+    
+    // При скролле пересчитываем
+    screen.addEventListener('scroll', trackCenterCard);
+    
+    // И один раз запускаем сразу, чтобы подсветить первую
+    trackCenterCard();
 }
 
 window.onload = init;
