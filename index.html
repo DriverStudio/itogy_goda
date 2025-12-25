@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f2027">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Новогодние итоги 2025</title>
     <!-- Основные стили -->
     <link rel="stylesheet" href="style.css">
-    
+
     <!-- Шрифты Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Montserrat:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+
     <!-- Иконки -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
 
     <div id="snow-container"></div>
@@ -28,7 +35,7 @@
                 <h1>Итоги 2025 Года</h1>
                 <p>Выберите свой профиль, чтобы начать путешествие</p>
             </header>
-            
+
             <div id="user-grid" class="user-grid">
                 <!-- Карточки генерируются через JS -->
             </div>
@@ -37,7 +44,7 @@
 
     <!-- ЭКРАН 2: Сториз -->
     <div id="story-screen" class="screen">
-        
+
         <!-- Навигация -->
         <div class="nav-arrow left" onclick="prevSlide()">
             <i class="fas fa-chevron-left"></i>
@@ -45,7 +52,7 @@
         <div class="nav-arrow right" onclick="nextSlide()">
             <i class="fas fa-chevron-right"></i>
         </div>
-        
+
         <div class="slide-container">
             <div id="slide-content" class="slide">
                 <!-- Контент слайда -->
@@ -60,4 +67,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

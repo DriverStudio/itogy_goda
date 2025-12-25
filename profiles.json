@@ -1,7 +1,7 @@
 {
   "tatiana-mosunova": {
     "name": "Таня М.",
-    "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Tatiana&backgroundColor=b6e3f4",
+    "photo": "image/tatyana.jpg",
     "stats": {
       "messages": 511,
       "rank": 1,
@@ -64,7 +64,7 @@
     }
   },
   "polina": {
-    "name": "Полина",
+    "name": "Полина М.",
     "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Polina&backgroundColor=b6e3f4",
     "stats": {
       "messages": 254,
@@ -80,7 +80,7 @@
     }
   },
   "natalya": {
-    "name": "Наташа",
+    "name": "Наташа Р.",
     "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Natalya&backgroundColor=c0aede",
     "stats": {
       "messages": 251,

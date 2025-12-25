@@ -258,6 +258,7 @@ h1 {
     font-size: 7rem;
     font-weight: 800;
     background: linear-gradient(to bottom, #ffd700, #ffaa00);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     line-height: 1;
@@ -445,4 +446,124 @@ h1 {
     .slide { padding: 30px 20px; }
     h1 { font-size: 3rem; }
     .big-number { font-size: 5rem; }
+}
+
+/* --- МОБИЛЬНАЯ АДАПТАЦИЯ --- */
+@media (max-width: 768px) {
+    
+    /* 1. Глобальные отступы и шрифты */
+    .container {
+        padding: 20px 15px;
+    }
+
+    h1 {
+        font-size: 2.8rem; /* Было 4rem */
+        line-height: 1.2;
+    }
+
+    .main-header p {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+
+    /* 2. Сетка пользователей */
+    .user-grid {
+        grid-template-columns: 1fr; /* Одна колонка */
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .user-card {
+        padding: 20px;
+        /* Убираем сильный сдвиг при анимации для плавности на слабых телефонах */
+        transform: translateY(10px); 
+    }
+
+    /* 3. Экран сториз (Слайды) */
+    .slide-container {
+        padding: 10px;
+        align-items: flex-start; /* Чтобы начало было видно сразу */
+        margin-top: 60px; /* Отступ под крестик */
+        margin-bottom: 80px; /* Отступ под стрелки */
+    }
+
+    .slide {
+        width: 100%;
+        padding: 30px 20px;
+        margin-bottom: 0;
+    }
+
+    .slide-title {
+        font-size: 2.2rem;
+    }
+
+    .big-number {
+        font-size: 4.5rem;
+    }
+
+    .slide-text {
+        font-size: 1.1rem;
+    }
+
+    /* 4. Навигация (Стрелки вниз) */
+    /* Переносим стрелки вниз экрана, чтобы удобно жать большим пальцем */
+    .nav-arrow {
+        top: auto;
+        bottom: 20px;
+        transform: none;
+        width: 50px;
+        height: 50px;
+        background: rgba(44, 83, 100, 0.8); /* Более плотный фон */
+        border: 1px solid var(--accent-gold);
+    }
+
+    .nav-arrow:active {
+        transform: scale(0.9);
+    }
+
+    .nav-arrow:hover {
+        transform: none; /* Убираем ховер-эффекты на таче */
+    }
+
+    .nav-arrow.left {
+        left: 20px;
+    }
+
+    .nav-arrow.right {
+        right: 20px;
+    }
+
+    /* Крестик покрупнее и в углу */
+    .close-btn {
+        top: 20px;
+        right: 20px;
+        font-size: 2rem;
+        padding: 10px; /* Увеличиваем область нажатия */
+        background: rgba(0,0,0,0.2);
+        border-radius: 50%;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Статистика в столбик, если не влезает */
+    .stat-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .stat-item span:last-child {
+        font-weight: bold;
+        color: var(--accent-gold);
+        align-self: flex-end;
+    }
+}
+
+/* ФИКС ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ (iPhone SE и т.д.) */
+@media (max-width: 380px) {
+    h1 { font-size: 2.2rem; }
+    .big-number { font-size: 3.5rem; }
 }
