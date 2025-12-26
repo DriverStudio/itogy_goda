@@ -11,7 +11,7 @@
       "visuals": 1,
       "politeness": 252,
       "questions": 107,
-      "shift": "<nobr>День (12-18)</nobr>",
+      "shift": "<nobr>день (12:00-18:00)</nobr>",
       "avgLength": 144
     }
   },
@@ -27,7 +27,7 @@
       "visuals": 0,
       "politeness": 222,
       "questions": 19,
-      "shift": "<nobr>День (12-18)</nobr>",
+      "shift": "<nobr>день (12:00-18:00)</nobr>",
       "avgLength": 104
     }
   },
@@ -43,7 +43,7 @@
       "visuals": 0,
       "politeness": 220,
       "questions": 6,
-      "shift": "<nobr>День (12-18)</nobr>",
+      "shift": "<nobr>день (12:00-18:00)</nobr>",
       "avgLength": 104
     }
   },
@@ -59,7 +59,7 @@
       "visuals": 0,
       "politeness": 203,
       "questions": 19,
-      "shift": "<nobr>Утро (06-12)</nobr>",
+      "shift": "<nobr>утро (09:00-12:00)</nobr>",
       "avgLength": 115
     }
   },
@@ -75,7 +75,7 @@
       "visuals": 0,
       "politeness": 197,
       "questions": 20,
-      "shift": "<nobr>Вечер (18-23)</nobr>",
+      "shift": "<nobr>вечер (18:00-23:00)</nobr>",
       "avgLength": 108
     }
   },
@@ -91,7 +91,7 @@
       "visuals": 0,
       "politeness": 211,
       "questions": 4,
-      "shift": "<nobr>Утро (06-12)</nobr>",
+      "shift": "<nobr>утро (09:00-12:00)</nobr>",
       "avgLength": 104
     }
   },
@@ -107,7 +107,7 @@
       "visuals": 0,
       "politeness": 193,
       "questions": 10,
-      "shift": "<nobr>Вечер (18-23)</nobr>",
+      "shift": "<nobr>вечер (18:00-23:00)</nobr>",
       "avgLength": 118
     }
   }
