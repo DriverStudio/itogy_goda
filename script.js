@@ -109,7 +109,6 @@ function getSlides() {
         },
         {
             title: "Твоя активность",
-            desc: "Вклад в общее дело",
             val: s.messages,
             label: "сообщений отправлено",
             content: `В этом году почетное <nobr><strong>${s.rank}-е место</strong></nobr><br>в топе писателей – твое!`,
@@ -134,26 +133,25 @@ function getSlides() {
                     detail: "Ты стремишься к идеалу! Столько раз ты редактировал свои сообщения, чтобы сформулировать мысль максимально точно."
                 },
                 { 
-                    name: "Щедрость", 
+                    name: "Полезные материалы", 
                     val: s.docs,
                     detail: "Твоя библиотека впечатляет. Столько документов, фото и файлов ты отправил в чат, делясь полезным."
                 }, 
                 { 
                     name: "Любознательность", 
                     val: s.questions,
-                    detail: "В споре рождается истина, а в вопросах – понимание. Ты не боишься уточнять детали!"
+                    detail: "Лучший способ разобраться – спросить. Ты не стесняешься уточнять нюансы, и это круто!"
                 },
                 { 
                     name: "Вежливость", 
                     val: s.politeness,
-                    detail: "Ты умеешь ценить чужой труд. Твое «спасибо» звучало в чатах чаще всего."
+                    detail: "Доброе слово всегда к месту. Твои благодарности делают общение в чате теплее и приятнее для всех."
                 }
             ],
             type: "list"
         },
         {
-            title: "Твой стиль", 
-            desc: "Ритм и продуктивность",
+            title: "ТРитм и продуктивность", 
             val: s.avgLength,
             label: "символов в одном сообщении", 
             content: `Твой пик активности приходится на <strong>${s.shift}</strong>. Кажется, это твое идеальное время для работы!`,
@@ -191,7 +189,7 @@ function renderSlide() {
     if (slide.type === "stat") {
         html += `
             <div class="big-number" id="anim-number">0</div>
-            <div style="color:var(--accent-gold); margin-bottom:20px; letter-spacing:3px; text-transform:uppercase; font-size:0.9rem">${slide.label}</div>
+            <div style="color:var(--accent-gold); margin-bottom:20px; font-size:0.9rem">${slide.label}</div>
             <p class="slide-text">${slide.content}</p>
         `;
     } else if (slide.type === "list") {
