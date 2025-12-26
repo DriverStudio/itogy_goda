@@ -11,13 +11,13 @@
       "visuals": 1,
       "politeness": 252,
       "questions": 107,
-      "shift": "День (12-18)",
+      "shift": "<nobr>День (12-18)</nobr>",
       "avgLength": 144
     }
   },
   "venera": {
     "name": "Венера Х.",
-    "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Venera&style=circle&backgroundColor=ffdfbf",
+    "photo": "image/venera.jpg",
     "stats": {
       "messages": 352,
       "rank": 2,
@@ -27,13 +27,13 @@
       "visuals": 0,
       "politeness": 222,
       "questions": 19,
-      "shift": "День (12-18)",
+      "shift": "<nobr>День (12-18)</nobr>",
       "avgLength": 104
     }
   },
   "alexandra": {
     "name": "Александра Г.",
-    "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Alexandra&backgroundColor=c0aede",
+    "photo": "image/alexandra.jpg",
     "stats": {
       "messages": 310,
       "rank": 3,
@@ -43,13 +43,13 @@
       "visuals": 0,
       "politeness": 220,
       "questions": 6,
-      "shift": "День (12-18)",
+      "shift": "<nobr>День (12-18)</nobr>",
       "avgLength": 104
     }
   },
   "evgeniya": {
     "name": "Женя Р.",
-    "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Evgeniya&backgroundColor=ffdfbf",
+    "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sanyaa&backgroundColor=d1d4f9",
     "stats": {
       "messages": 293,
       "rank": 4,
@@ -59,13 +59,13 @@
       "visuals": 0,
       "politeness": 203,
       "questions": 19,
-      "shift": "Утро (06-12)",
+      "shift": "<nobr>Утро (06-12)</nobr>",
       "avgLength": 115
     }
   },
   "polina": {
     "name": "Полина М.",
-    "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Polina&backgroundColor=b6e3f4",
+    "photo": "image/paliiinaaa.jpg",
     "stats": {
       "messages": 254,
       "rank": 5,
@@ -75,13 +75,13 @@
       "visuals": 0,
       "politeness": 197,
       "questions": 20,
-      "shift": "Вечер (18-23)",
+      "shift": "<nobr>Вечер (18-23)</nobr>",
       "avgLength": 108
     }
   },
   "natalya": {
     "name": "Наташа Р.",
-    "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Natalya&backgroundColor=c0aede",
+    "photo": "image/natalya.jpg",
     "stats": {
       "messages": 251,
       "rank": 6,
@@ -91,13 +91,13 @@
       "visuals": 0,
       "politeness": 211,
       "questions": 4,
-      "shift": "Утро (06-12)",
+      "shift": "<nobr>Утро (06-12)</nobr>",
       "avgLength": 104
     }
   },
   "sanyaa": {
     "name": "Александр Л.",
-    "photo": "https://api.dicebear.com/7.x/avataaars/svg?seed=Sanyaa&backgroundColor=d1d4f9",
+    "photo": "image/sanyaa.jpg",
     "stats": {
       "messages": 206,
       "rank": 7,
@@ -107,7 +107,7 @@
       "visuals": 0,
       "politeness": 193,
       "questions": 10,
-      "shift": "Вечер (18-23)",
+      "shift": "<nobr>Вечер (18-23)</nobr>",
       "avgLength": 118
     }
   }

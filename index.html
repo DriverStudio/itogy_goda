@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <meta name="theme-color" content="#0f2027">
+    <meta name="theme-color" content="#36449C">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <title>Новогодние итоги 2025</title>
     
     <link rel="stylesheet" href="style.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -23,25 +23,21 @@
         <div id="progress-bar"></div>
     </div>
 
-    <!-- ЭКРАН 1: Выбор профиля -->
     <div id="selection-screen" class="screen active">
         <div class="container">
             <header class="main-header">
                 <div class="festive-icon">🎄</div>
                 <h1>Итоги 2025 Года</h1>
-                <p>Выберите свой профиль, чтобы начать путешествие</p>
+                <p>Выбери свой профиль, чтобы начать путешествие</p>
             </header>
 
             <div id="user-grid" class="user-grid">
-                <!-- Карточки генерируются через JS -->
-            </div>
+                </div>
         </div>
     </div>
 
-    <!-- ЭКРАН 2: Сториз -->
     <div id="story-screen" class="screen">
 
-        <!-- Навигация -->
         <div class="nav-arrow left" onclick="prevSlide()">
             <i class="fas fa-chevron-left"></i>
         </div>
@@ -51,11 +47,9 @@
 
         <div class="slide-container">
             <div id="slide-content" class="slide">
-                <!-- Контент слайда -->
-            </div>
+                </div>
         </div>
 
-        <!-- Кнопка закрытия -->
         <div onclick="closeStory()" class="close-btn">
             <i class="fas fa-times"></i>
         </div>
