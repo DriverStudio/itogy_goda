@@ -1087,3 +1087,106 @@ stat-tooltip {
         line-height: 1.4;
     }
 }
+
+/* --- ЭКРАН ЗАГРУЗКИ --- */
+#loader-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #36449C; /* Твой основной синий цвет */
+    z-index: 999999; /* Поверх всего вообще */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.5s ease-out, visibility 0.5s;
+}
+
+.loader-content {
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+}
+
+.loader-icon-main {
+    font-size: 60px;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+.loader-title {
+    color: #fff;
+    font-family: 'Marck Script', cursive; /* Твой красивый шрифт */
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-weight: normal;
+}
+
+/* Трек (фон полоски) */
+.progress-container {
+    width: 100%;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 3px; /* Отступ внутри */
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
+    position: relative;
+    overflow: visible; /* Чтобы сани торчали */
+}
+
+/* Заливка (Леденец) */
+.progress-bar {
+    height: 100%;
+    width: 0%; /* JS будет менять это */
+    background: repeating-linear-gradient(
+        45deg,
+        #ff6b6b,
+        #ff6b6b 10px,
+        #fff 10px,
+        #fff 20px
+    );
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.7);
+    position: relative;
+    transition: width 0.2s linear;
+    
+    /* Анимация движения полосок */
+    background-size: 28px 28px;
+    animation: barberpole 1s linear infinite;
+}
+
+/* Бегунок (Сани) */
+.progress-runner {
+    position: absolute;
+    right: -15px; /* Свешиваем вправо */
+    top: -25px;   /* Поднимаем над полоской */
+    font-size: 30px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    transition: transform 0.2s;
+}
+
+.loading-percent {
+    margin-top: 15px;
+    color: #fff;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Анимации */
+@keyframes barberpole {
+    0% { background-position: 0 0; }
+    100% { background-position: 28px 0; }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Класс для скрытия */
+.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}

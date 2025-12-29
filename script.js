@@ -23,6 +23,67 @@ const personalWishes = {
 // Текст для тех, кого нет в списке (на всякий случай)
 const defaultWish = "С Новым Годом! Спасибо за этот год. Пусть 2026 принесет удачу, тепло, финансовый рост и новые профессиональные победы!";
 
+// --- ЛОГИКА ЗАГРУЗКИ ---
+document.addEventListener("DOMContentLoaded", () => {
+    const loaderScreen = document.getElementById('loader-screen');
+    const progressBar = document.getElementById('progress-bar-fill');
+    const percentText = document.getElementById('loading-text');
+    
+    // Эмодзи, которые будут меняться по ходу
+    const icons = ["🎅", "🎁", "🎄", "⛄", "❄️"];
+    const mainIcon = document.querySelector('.loader-icon-main');
+
+    let width = 0;
+    const interval = setInterval(() => {
+        // Логика "умного" торможения
+        // Сначала быстро, потом медленнее, чтобы ждать реальной загрузки
+        if (width >= 90) {
+            // Ждем window.onload, не растем дальше 90%
+        } else if (width >= 60) {
+            width += 0.5; // Медленно
+        } else {
+            width += 2; // Быстро
+        }
+        
+        updateLoader(width);
+    }, 50); // Обновляем каждые 50мс
+
+    // Функция обновления вида
+    function updateLoader(w) {
+        progressBar.style.width = w + '%';
+        percentText.innerText = Math.floor(w) + '%';
+        
+        // Меняем иконку каждые 20%
+        const iconIndex = Math.floor(w / 20) % icons.length;
+        if(mainIcon) mainIcon.innerText = icons[iconIndex];
+    }
+
+    // Когда ВСЁ (картинки, стили, скрипты) загрузилось
+    window.addEventListener('load', () => {
+        clearInterval(interval);
+        
+        // Быстро добиваем до 100%
+        let endWidth = width;
+        const endInterval = setInterval(() => {
+            if (endWidth >= 100) {
+                clearInterval(endInterval);
+                updateLoader(100);
+                
+                // Убираем экран через полсекунды
+                setTimeout(() => {
+                    loaderScreen.classList.add('fade-out');
+                    // Удаляем из DOM, чтобы не мешал кликам
+                    setTimeout(() => loaderScreen.remove(), 500);
+                }, 500);
+                
+            } else {
+                endWidth += 2; // Очень быстро заполняем остаток
+                updateLoader(endWidth);
+            }
+        }, 10);
+    });
+});
+
 // Инициализация
 async function init() {
     createSnow();
