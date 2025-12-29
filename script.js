@@ -182,25 +182,25 @@ function getSlides() {
             title: "С Новым Годом!",
             desc: "Вперед, в 2026!",
             content: "Пусть наступающий год принесет еще больше радостных моментов, ярких обсуждений и успеха во всех делах!",
-            type: "text"
-        },
-        {
-            title: "Тайный санта?",
-            desc: "У меня есть кое-что для тебя...",
-            // ВСТАВЛЯЕМ СЮДА КОРОБКУ
-            content: `
-                <div class="gift-container">
-                    <div id="gift-box-el" class="gift-box" onclick="tryOpenGift()">
-                        <div class="gift-lid"></div>
-                        <div class="gift-bow"></div>
-                    </div>
-                    <div id="gift-msg-el" class="gift-text">Нажми, чтобы открыть</div>
-                    
-                    <div id="polaroid-place"></div>
-                </div>
-            `,
-            type: "final" // Тип можно оставить final или text, главное content
+            type: "final"
         }
+        // {
+        //     title: "Тайный санта?",
+        //     desc: "У меня есть кое-что для тебя...",
+        //     // ВСТАВЛЯЕМ СЮДА КОРОБКУ
+        //     content: `
+        //         <div class="gift-container">
+        //             <div id="gift-box-el" class="gift-box" onclick="tryOpenGift()">
+        //                 <div class="gift-lid"></div>
+        //                 <div class="gift-bow"></div>
+        //             </div>
+        //             <div id="gift-msg-el" class="gift-text">Нажми, чтобы открыть</div>
+                    
+        //             <div id="polaroid-place"></div>
+        //         </div>
+        //     `,
+        //     type: "final" // Тип можно оставить final или text, главное content
+        // }
     ];
 }
 
@@ -390,8 +390,8 @@ function tryOpenGift() {
     const unlockDate = new Date('2026-01-01T00:00:00'); 
     
     // !!! ТЕСТ: РАСКОММЕНТИРУЙ ДЛЯ ПРОВЕРКИ, ПОТОМ УБЕРИ !!!
-    // const now = new Date('2026-01-02'); 
-    const now = new Date(); 
+    const now = new Date('2026-01-02'); 
+    // const now = new Date(); 
 
     if (now >= unlockDate) {
         // --- ОТКРЫТИЕ ---
