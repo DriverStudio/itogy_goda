@@ -439,209 +439,209 @@ function initScrollTracking() {
     trackCenterCard();
 }
 
-function tryOpenGift() {
-    const box = document.getElementById('gift-box-el');
-    const msg = document.getElementById('gift-msg-el');
-    const place = document.getElementById('polaroid-place');
+// function tryOpenGift() {
+//     const box = document.getElementById('gift-box-el');
+//     const msg = document.getElementById('gift-msg-el');
+//     const place = document.getElementById('polaroid-place');
     
-    // Эффекты
-    const sound = document.getElementById('camera-sound');
-    const flash = document.getElementById('camera-flash');
+//     // Эффекты
+//     const sound = document.getElementById('camera-sound');
+//     const flash = document.getElementById('camera-flash');
 
-    const unlockDate = new Date('2026-01-01T00:00:00'); 
+//     const unlockDate = new Date('2026-01-01T00:00:00'); 
     
-    // !!! ТЕСТ: РАСКОММЕНТИРУЙ ДЛЯ ПРОВЕРКИ, ПОТОМ УБЕРИ !!!
-    const now = new Date('2026-01-02'); 
-    // const now = new Date(); 
+//     // !!! ТЕСТ: РАСКОММЕНТИРУЙ ДЛЯ ПРОВЕРКИ, ПОТОМ УБЕРИ !!!
+//     const now = new Date('2026-01-02'); 
+//     // const now = new Date(); 
 
-    if (now >= unlockDate) {
-        // --- ОТКРЫТИЕ ---
+//     if (now >= unlockDate) {
+//         // --- ОТКРЫТИЕ ---
         
-        // Останавливаем таймер, если он шел
-        if (timerInterval) clearInterval(timerInterval);
+//         // Останавливаем таймер, если он шел
+//         if (timerInterval) clearInterval(timerInterval);
 
-        sound.currentTime = 0;
-        sound.play().catch(e => console.log("Audio play failed"));
+//         sound.currentTime = 0;
+//         sound.play().catch(e => console.log("Audio play failed"));
 
-        if (flash) {
-            flash.classList.add('flash-active');
-            setTimeout(() => flash.classList.remove('flash-active'), 600);
-        }
+//         if (flash) {
+//             flash.classList.add('flash-active');
+//             setTimeout(() => flash.classList.remove('flash-active'), 600);
+//         }
 
-        box.style.display = 'none';
-        msg.style.display = 'none';
+//         box.style.display = 'none';
+//         msg.style.display = 'none';
         
-        // Показываем открытку
-        place.innerHTML = generateWarmCard();
-        const card = place.querySelector('.warm-card');
-        card.style.display = 'block';
+//         // Показываем открытку
+//         place.innerHTML = generateWarmCard();
+//         const card = place.querySelector('.warm-card');
+//         card.style.display = 'block';
         
-    } else {
-        // --- РАНО: ЗАПУСКАЕМ ОБРАТНЫЙ ОТСЧЕТ ---
+//     } else {
+//         // --- РАНО: ЗАПУСКАЕМ ОБРАТНЫЙ ОТСЧЕТ ---
         
-        box.classList.add('shake-anim');
-        setTimeout(() => box.classList.remove('shake-anim'), 500);
+//         box.classList.add('shake-anim');
+//         setTimeout(() => box.classList.remove('shake-anim'), 500);
         
-        // Функция обновления текста
-        const updateTimer = () => {
-            const currentTime = new Date();
-            const diff = unlockDate - currentTime;
+//         // Функция обновления текста
+//         const updateTimer = () => {
+//             const currentTime = new Date();
+//             const diff = unlockDate - currentTime;
             
-            if (diff <= 0) {
-                // Если время вышло, перезагружаем страницу или просто меняем текст
-                location.reload(); 
-                return;
-            }
+//             if (diff <= 0) {
+//                 // Если время вышло, перезагружаем страницу или просто меняем текст
+//                 location.reload(); 
+//                 return;
+//             }
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((diff / (1000 * 60)) % 60);
-            const seconds = Math.floor((diff / 1000) % 60);
+//             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+//             const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+//             const minutes = Math.floor((diff / (1000 * 60)) % 60);
+//             const seconds = Math.floor((diff / 1000) % 60);
             
-            // Красивый вывод с ведущими нулями (05 сек вместо 5 сек)
-            const hStr = hours.toString().padStart(2, '0');
-            const mStr = minutes.toString().padStart(2, '0');
-            const sStr = seconds.toString().padStart(2, '0');
+//             // Красивый вывод с ведущими нулями (05 сек вместо 5 сек)
+//             const hStr = hours.toString().padStart(2, '0');
+//             const mStr = minutes.toString().padStart(2, '0');
+//             const sStr = seconds.toString().padStart(2, '0');
             
-            msg.innerHTML = `
-                До открытия подарка:<br>
-                <span style="font-size:1.2em; color:#fff;">${days} дн. ${hStr}:${mStr}:${sStr}</span>
-            `;
-            msg.style.color = '#ff6b6b';
-        };
+//             msg.innerHTML = `
+//                 До открытия подарка:<br>
+//                 <span style="font-size:1.2em; color:#fff;">${days} дн. ${hStr}:${mStr}:${sStr}</span>
+//             `;
+//             msg.style.color = '#ff6b6b';
+//         };
 
-        // Запускаем обновление сразу и потом каждую секунду
-        updateTimer();
-        if (timerInterval) clearInterval(timerInterval); // сброс старого
-        timerInterval = setInterval(updateTimer, 1000);
-    }
-}
+//         // Запускаем обновление сразу и потом каждую секунду
+//         updateTimer();
+//         if (timerInterval) clearInterval(timerInterval); // сброс старого
+//         timerInterval = setInterval(updateTimer, 1000);
+//     }
+// }
 
-function generateWarmCard() {
-    const user = allProfiles[currentUserId];
-    let message = personalWishes[currentUserId];
-    if (!message) message = defaultWish;
+// function generateWarmCard() {
+//     const user = allProfiles[currentUserId];
+//     let message = personalWishes[currentUserId];
+//     if (!message) message = defaultWish;
 
-    const signs = ["С теплом, твой коллега", "Happy New Year 2026", "Твой Тайный Санта"];
-    const randomSign = signs[Math.floor(Math.random() * signs.length)];
+//     const signs = ["С теплом, твой коллега", "Happy New Year 2026", "Твой Тайный Санта"];
+//     const randomSign = signs[Math.floor(Math.random() * signs.length)];
 
-    return `
-        <div class="warm-card" id="polaroid-card">
-            <div class="decor-corner top-right">❄️</div>
-            <div class="decor-corner bottom-left">🎄</div>
+//     return `
+//         <div class="warm-card" id="polaroid-card">
+//             <div class="decor-corner top-right">❄️</div>
+//             <div class="decor-corner bottom-left">🎄</div>
 
-            <div class="polaroid-frame">
-                <img src="${user.photo}" class="polaroid-img" alt="Фото">
-            </div>
+//             <div class="polaroid-frame">
+//                 <img src="${user.photo}" class="polaroid-img" alt="Фото">
+//             </div>
             
-            <div class="handwritten-msg">«${message}»</div>
-            <div class="handwritten-sign">~ ${randomSign} ~</div>
-        </div>
+//             <div class="handwritten-msg">«${message}»</div>
+//             <div class="handwritten-sign">~ ${randomSign} ~</div>
+//         </div>
         
-        <button onclick="saveCardAsImage()" class="save-btn">Сохранить открытку</button>`;
-}
+//         <button onclick="saveCardAsImage()" class="save-btn">Сохранить открытку</button>`;
+// }
 
-function saveCardAsImage() {
-    // 1. Убираем вспышку
-    const flash = document.getElementById('camera-flash');
-    if (flash) flash.style.display = 'none';
+// function saveCardAsImage() {
+//     // 1. Убираем вспышку
+//     const flash = document.getElementById('camera-flash');
+//     if (flash) flash.style.display = 'none';
 
-    // 2. Берем данные
-    const realCard = document.getElementById("polaroid-card");
-    const photoSrc = realCard.querySelector('.polaroid-img').src;
-    const msgText = realCard.querySelector('.handwritten-msg').innerText;
-    const signText = realCard.querySelector('.handwritten-sign').innerText;
+//     // 2. Берем данные
+//     const realCard = document.getElementById("polaroid-card");
+//     const photoSrc = realCard.querySelector('.polaroid-img').src;
+//     const msgText = realCard.querySelector('.handwritten-msg').innerText;
+//     const signText = realCard.querySelector('.handwritten-sign').innerText;
 
-    // 3. Создаем ИДЕАЛЬНУЮ ПРАЗДНИЧНУЮ КОПИЮ
-    const exportBox = document.createElement('div');
+//     // 3. Создаем ИДЕАЛЬНУЮ ПРАЗДНИЧНУЮ КОПИЮ
+//     const exportBox = document.createElement('div');
     
-    // --- СТИЛИ ФОНА КАРТОЧКИ ---
-    exportBox.style.position = 'fixed';
-    exportBox.style.top = '-9999px';
-    exportBox.style.left = '0';
-    exportBox.style.width = '340px'; 
-    // Задаем явный цвет фона, чтобы градиент ложился на него
-    exportBox.style.backgroundColor = '#fdfbf7'; 
-    // Упрощенный паттерн (точки), который html2canvas лучше понимает
-    exportBox.style.backgroundImage = 'radial-gradient(#d7ccc8 1px, transparent 1px)';
-    exportBox.style.backgroundSize = '20px 20px';
+//     // --- СТИЛИ ФОНА КАРТОЧКИ ---
+//     exportBox.style.position = 'fixed';
+//     exportBox.style.top = '-9999px';
+//     exportBox.style.left = '0';
+//     exportBox.style.width = '340px'; 
+//     // Задаем явный цвет фона, чтобы градиент ложился на него
+//     exportBox.style.backgroundColor = '#fdfbf7'; 
+//     // Упрощенный паттерн (точки), который html2canvas лучше понимает
+//     exportBox.style.backgroundImage = 'radial-gradient(#d7ccc8 1px, transparent 1px)';
+//     exportBox.style.backgroundSize = '20px 20px';
     
-    exportBox.style.padding = '30px 30px 60px 30px';
-    exportBox.style.zIndex = '999999';
-    exportBox.style.textAlign = 'center';
-    exportBox.style.fontFamily = "'Marck Script', cursive";
-    exportBox.style.boxSizing = 'border-box';
+//     exportBox.style.padding = '30px 30px 60px 30px';
+//     exportBox.style.zIndex = '999999';
+//     exportBox.style.textAlign = 'center';
+//     exportBox.style.fontFamily = "'Marck Script', cursive";
+//     exportBox.style.boxSizing = 'border-box';
 
-    exportBox.innerHTML = `
-        <div style="position:absolute; top:15px; right:15px; font-size:40px; transform: rotate(15deg); display: inline-block;">❄️</div>
-        <div style="position:absolute; bottom:15px; left:15px; font-size:50px; transform: rotate(-15deg); display: inline-block;">🎄</div>
+//     exportBox.innerHTML = `
+//         <div style="position:absolute; top:15px; right:15px; font-size:40px; transform: rotate(15deg); display: inline-block;">❄️</div>
+//         <div style="position:absolute; bottom:15px; left:15px; font-size:50px; transform: rotate(-15deg); display: inline-block;">🎄</div>
 
-        <div style="
-            position:absolute; top:-15px; left:50%; transform:translateX(-50%) rotate(2deg);
-            width:120px; height:40px; 
-            background-color: rgba(211, 47, 47, 0.9);
-            background: linear-gradient(45deg, 
-                rgba(211,47,47,1) 25%, 
-                rgba(255,255,255,0.2) 25%, 
-                rgba(255,255,255,0.2) 50%, 
-                rgba(211,47,47,1) 50%, 
-                rgba(211,47,47,1) 75%, 
-                rgba(255,255,255,0.2) 75%, 
-                rgba(255,255,255,0.2) 100%
-            );
-            background-size: 20px 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-        "></div>
+//         <div style="
+//             position:absolute; top:-15px; left:50%; transform:translateX(-50%) rotate(2deg);
+//             width:120px; height:40px; 
+//             background-color: rgba(211, 47, 47, 0.9);
+//             background: linear-gradient(45deg, 
+//                 rgba(211,47,47,1) 25%, 
+//                 rgba(255,255,255,0.2) 25%, 
+//                 rgba(255,255,255,0.2) 50%, 
+//                 rgba(211,47,47,1) 50%, 
+//                 rgba(211,47,47,1) 75%, 
+//                 rgba(255,255,255,0.2) 75%, 
+//                 rgba(255,255,255,0.2) 100%
+//             );
+//             background-size: 20px 20px;
+//             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+//         "></div>
 
-        <div style="
-            background:#fff; padding:15px; 
-            border:1px solid #ddd; 
-            outline: 3px solid #d4af37; outline-offset: -8px;
-            margin-bottom: 25px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        ">
-            <div style="
-                width: 100%; 
-                height: 280px; 
-                background-image: url('${photoSrc}');
-                background-size: cover;
-                background-position: center top;
-                background-repeat: no-repeat;
-            "></div>
-        </div>
+//         <div style="
+//             background:#fff; padding:15px; 
+//             border:1px solid #ddd; 
+//             outline: 3px solid #d4af37; outline-offset: -8px;
+//             margin-bottom: 25px; 
+//             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+//         ">
+//             <div style="
+//                 width: 100%; 
+//                 height: 280px; 
+//                 background-image: url('${photoSrc}');
+//                 background-size: cover;
+//                 background-position: center top;
+//                 background-repeat: no-repeat;
+//             "></div>
+//         </div>
         
-        <div style="font-size: 26px; color: #3e2723; font-weight: bold; line-height: 1.4; margin-bottom: 20px;">
-            ${msgText}
-        </div>
+//         <div style="font-size: 26px; color: #3e2723; font-weight: bold; line-height: 1.4; margin-bottom: 20px;">
+//             ${msgText}
+//         </div>
         
-        <div style="font-size: 20px; color: #b71c1c; font-weight: bold; text-align: right;">
-            ${signText}
-        </div>
-    `;
+//         <div style="font-size: 20px; color: #b71c1c; font-weight: bold; text-align: right;">
+//             ${signText}
+//         </div>
+//     `;
 
-    document.body.appendChild(exportBox);
+//     document.body.appendChild(exportBox);
 
-    // 4. Фотографируем
-    html2canvas(exportBox, {
-        scale: 4, 
-        // Явно указываем цвет фона для канваса, иначе может стать прозрачным
-        backgroundColor: "#fdfbf7", 
-        useCORS: true,
-        logging: false
-    }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = `HappyNewYear_2026.png`;
-        link.href = canvas.toDataURL("image/png");
-        link.click();
+//     // 4. Фотографируем
+//     html2canvas(exportBox, {
+//         scale: 4, 
+//         // Явно указываем цвет фона для канваса, иначе может стать прозрачным
+//         backgroundColor: "#fdfbf7", 
+//         useCORS: true,
+//         logging: false
+//     }).then(canvas => {
+//         const link = document.createElement('a');
+//         link.download = `HappyNewYear_2026.png`;
+//         link.href = canvas.toDataURL("image/png");
+//         link.click();
         
-        document.body.removeChild(exportBox);
-        if (flash) flash.style.display = '';
-    }).catch(err => {
-        console.error(err);
-        document.body.removeChild(exportBox);
-        if (flash) flash.style.display = '';
-    });
-}
+//         document.body.removeChild(exportBox);
+//         if (flash) flash.style.display = '';
+//     }).catch(err => {
+//         console.error(err);
+//         document.body.removeChild(exportBox);
+//         if (flash) flash.style.display = '';
+//     });
+// }
 
 // --- НОВАЯ ФУНКЦИЯ УПРАВЛЕНИЯ КНОПКАМИ ---
 function updateNavButtons(totalSlides) {
