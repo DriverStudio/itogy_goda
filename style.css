@@ -129,11 +129,34 @@ h1 {
     margin-top: 10px;
 }
 
+/* Контейнер иконки (отвечает за анимацию) */
 .festive-icon {
-    font-size: 3.5rem;
-    margin-bottom: 10px;
-    animation: bounce 2s infinite;
     display: inline-block;
+    margin-bottom: 10px;
+    
+    /* Анимация покачивания */
+    animation: swing 3s ease-in-out infinite;
+    transform-origin: bottom center; 
+}
+
+/* Настройки самой PNG картинки */
+.festive-icon img {
+    width: 60px;  /* Ширина ёлочки */
+    height: auto; /* Высота подстроится сама */
+    display: block;
+    
+    /* Тень, чтобы картинка не выглядела плоской */
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2));
+}
+
+/* Сама анимация (если её еще нет в файле) */
+@keyframes swing {
+    0% { transform: rotate(0deg); }
+    20% { transform: rotate(5deg); }
+    40% { transform: rotate(-5deg); }
+    60% { transform: rotate(3deg); }
+    80% { transform: rotate(-3deg); }
+    100% { transform: rotate(0deg); }
 }
 
 /* Контейнер для ёлки (он отвечает за позицию и анимацию) */
