@@ -136,6 +136,42 @@ h1 {
     display: inline-block;
 }
 
+/* Контейнер для ёлки (он отвечает за позицию и анимацию) */
+/* Контейнер: ставит елку ровно по центру экрана */
+/* Контейнер ёлки */
+.floating-tree {
+    position: absolute; /* Или fixed, если хочешь, чтобы она всегда висела при прокрутке */
+    top: 40px; /* Отступ от самого верха страницы */
+    left: 0;
+    width: 100%; /* Растягиваем контейнер на всю ширину */
+    
+    display: flex;       /* Используем Flexbox... */
+    justify-content: center; /* ...чтобы выровнять ёлку идеально по центру */
+    
+    z-index: 50; /* ВАЖНО: Ставим число больше, чем у карточек (обычно там 1-10) */
+    pointer-events: none; /* Чтобы сквозь ёлку можно было кликать на заголовок или кнопки */
+}
+
+/* Сама картинка */
+.tree-svg {
+    width: 120px; /* Размер ёлочки (подстрой под себя) */
+    height: auto;
+    display: block;
+    
+    /* Анимация плавного парения */
+    animation: floatingY 4s ease-in-out infinite;
+    
+    /* Тень */
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+}
+
+/* Анимация движения только вверх-вниз */
+@keyframes floatingY {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); } /* Амплитуда движения */
+    100% { transform: translateY(0); }
+}
+
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -540,6 +576,14 @@ stat-tooltip {
 .nav-arrow.left { left: 30px; }
 .nav-arrow.right { right: 30px; }
 
+.nav-arrow {
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.nav-arrow:active {
+    transform: scale(0.9);
+}
+
 .close-btn {
     position: fixed;
     top: 30px; right: 30px; 
@@ -778,3 +822,245 @@ stat-tooltip {
     position: relative;
     top: -2px; /* Чуть подровнять по высоте строки */
     animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- СТИЛИ ДЛЯ ПОДАРКА И ОТКРЫТКИ --- */
+
+/* 1. Коробка подарка */
+.gift-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* min-height: 350px; Чтобы слайд не прыгал при открытии */
+    justify-content: center;
+}
+
+.gift-box {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #d32f2f, #b71c1c); /* Красный */
+    cursor: pointer;
+    transition: transform 0.3s;
+    z-index: 10;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.gift-lid {
+    position: absolute;
+    top: -15px;
+    left: -5px;
+    width: 110px;
+    height: 25px;
+    background: #e53935;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.gift-bow {
+    position: absolute;
+    top: -15px;
+    left: 40px;
+    width: 20px;
+    height: 115px;
+    background: var(--accent-gold); /* Твой золотой */
+}
+.gift-bow::before {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: -40px;
+    width: 100px;
+    height: 20px;
+    background: var(--accent-gold);
+}
+
+.gift-text {
+    margin-top: 20px;
+    color: var(--accent-gold);
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Анимация тряски (если рано открывать) */
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+.shake-anim { animation: shake 0.5s; }
+
+/* 2. Полароид-открытка */
+/* --- ПРАЗДНИЧНАЯ ПОЛАРОИД-ОТКРЫТКА --- */
+
+.warm-card {
+    display: none; 
+    width: 300px;
+    /* Фон: теплый бумажный цвет + легкая текстура */
+    background-color: #fdfbf7;
+    background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+    background-size: 20px 20px;
+    
+    padding: 20px 20px 50px 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    transform: rotate(-3deg);
+    text-align: center;
+    position: relative;
+    border: 1px solid #eaeaea;
+    animation: fadeInCard 1s ease-out;
+}
+
+/* Красный праздничный скотч с узором */
+.warm-card::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(2deg);
+    width: 110px;
+    height: 35px;
+    /* Красный полупрозрачный скотч */
+    background: rgba(211, 47, 47, 0.85);
+    /* Узор диагональных полосок (как леденец) */
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.2) 10px, rgba(255,255,255,0.2) 20px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+
+/* Рамка фото */
+.polaroid-frame {
+    background: #fff;
+    padding: 12px;
+    border: 1px solid #ddd;
+    /* Золотая обводка для торжественности */
+    outline: 2px solid var(--accent-gold); 
+    outline-offset: -6px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    position: relative;
+}
+
+.polaroid-img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    filter: sepia(20%) contrast(105%);
+    display: block;
+}
+
+/* Декоративные элементы (Снежинки/Ветки) в углах */
+.decor-corner {
+    position: absolute;
+    font-size: 2rem;
+    line-height: 1;
+    opacity: 0.8;
+    pointer-events: none;
+}
+.top-right { top: 10px; right: 10px; transform: rotate(15deg); }
+.bottom-left { bottom: 15px; left: 15px; transform: rotate(-15deg); font-size: 2.5rem; }
+
+/* Тексты */
+.handwritten-msg {
+    font-family: 'Marck Script', cursive;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    color: #3e2723; /* Темно-коричневый вместо черного (теплее) */
+    margin-bottom: 15px;
+}
+
+.handwritten-sign {
+    font-family: 'Marck Script', cursive;
+    font-size: 1.1rem;
+    color: #c62828; /* Красный цвет для подписи */
+    text-align: right;
+    margin-top: 10px;
+}
+
+@keyframes fadeInCard {
+    from { opacity: 0; transform: scale(0.8) rotate(0deg); }
+    to { opacity: 1; transform: scale(1) rotate(-3deg); }
+}
+
+/* --- ЭФФЕКТ ВСПЫШКИ --- */
+#camera-flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 9999; /* Поверх всего */
+    opacity: 0;
+    pointer-events: none; /* Чтобы сквозь него можно было кликать, когда он прозрачный */
+    display: none; /* Скрыт полностью, пока не нужен */
+}
+
+/* Анимация: Резко появляется и плавно исчезает */
+@keyframes flash-effect {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.flash-active {
+    display: block !important;
+    animation: flash-effect 0.6s ease-out forwards;
+}
+
+/* Кнопка сохранения фото */
+.save-btn {
+    margin-top: 20px;
+    background: transparent;
+    border: 1px solid #aaa;
+    color: #ffffff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.save-btn:hover {
+    background: rgba(0,0,0,0.05);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+}
+
+/* --- АДАПТИВ ПОД МОБИЛЬНЫЕ --- */
+@media (max-width: 768px) {
+    
+    /* Уменьшаем фото на слайдах */
+    .slide-user-photo {
+        width: 100px;  /* Было, скорее всего, 150px или больше */
+        height: 100px;
+        margin-bottom: 15px; /* Уменьшаем отступ до текста */
+        border-width: 3px;   /* Делаем рамку чуть тоньше */
+    }
+
+    /* Чуть уменьшаем заголовок, чтобы тоже не давил */
+    .slide-title {
+        font-size: 1.5rem; 
+        margin-bottom: 10px;
+    }
+
+    /* Поднимаем контент чуть выше, чтобы влезал текст снизу */
+    .slide-content {
+        justify-content: flex-start; /* Прижимаем к верху, а не по центру */
+        padding-top: 40px; /* Небольшой отступ сверху */
+    }
+    
+    /* Если текст описания тоже огромный, уменьшаем */
+    .slide-text {
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+}

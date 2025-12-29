@@ -3,17 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
     <meta name="theme-color" content="#36449C">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
+
     <title>Новогодние итоги 2025</title>
-    
+
     <link rel="stylesheet" href="style.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Marck+Script&display=swap" rel="stylesheet">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
 </head>
 
 <body>
@@ -32,22 +35,22 @@
             </header>
 
             <div id="user-grid" class="user-grid">
-                </div>
+            </div>
         </div>
     </div>
 
     <div id="story-screen" class="screen">
 
-        <div class="nav-arrow left" onclick="prevSlide()">
+        <div id="prev-arrow" class="nav-arrow left" onclick="prevSlide()">
             <i class="fas fa-chevron-left"></i>
         </div>
-        <div class="nav-arrow right" onclick="nextSlide()">
+        <div id="next-arrow" class="nav-arrow right" onclick="nextSlide()">
             <i class="fas fa-chevron-right"></i>
         </div>
 
         <div class="slide-container">
             <div id="slide-content" class="slide">
-                </div>
+            </div>
         </div>
 
         <div onclick="closeStory()" class="close-btn">
@@ -56,6 +59,12 @@
     </div>
 
     <script src="script.js"></script>
+
+    <audio id="camera-sound" src="https://www.soundjay.com/mechanical/camera-shutter-click-08.mp3"
+        preload="auto"></audio>
+
+    <div id="camera-flash"></div>
+    <!-- <audio id="hover-sound" src="https://www.soundjay.com/misc/sounds/bubble-pop-high-1.mp3" preload="auto"></audio> -->
 </body>
 
 </html>
